@@ -1,0 +1,13 @@
+@import './styles/reset.css';
+@import './styles/variables.css';
+
+/* Global utilities if needed */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+.section-padding {
+  padding: var(--spacing-lg) 0;
+}

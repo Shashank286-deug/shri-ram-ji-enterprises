@@ -1,0 +1,135 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color var(--transition-smooth), padding var(--transition-smooth);
+    padding: 1.5rem 0;
+}
+
+.header.scrolled {
+    background: rgba(10, 25, 47, 0.85);
+    /* Dark Navy with opacity */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-sm);
+}
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    z-index: 1001;
+}
+
+.logo img {
+    height: 48px;
+    width: auto;
+    transition: height var(--transition-smooth);
+}
+
+.scrolled .logo img {
+    height: 40px;
+}
+
+.companyName {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-accent);
+    letter-spacing: 0.02em;
+}
+
+.nav {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.navLink {
+    font-family: var(--font-body);
+    color: var(--color-text-light);
+    /* Light text on dark bg */
+    font-weight: 500;
+    position: relative;
+    opacity: 0.9;
+    transition: color var(--transition-fast), opacity var(--transition-fast);
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-secondary);
+    transition: width var(--transition-smooth);
+}
+
+.navLink:hover {
+    color: var(--color-secondary);
+    opacity: 1;
+}
+
+.navLink:hover::after {
+    width: 100%;
+}
+
+.mobileToggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.bar {
+    width: 25px;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: var(--transition-smooth);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .companyName {
+        font-size: 1rem;
+        max-width: 200px;
+        /* Prevent text overflow */
+    }
+
+    .nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70%;
+        height: 100vh;
+        background: var(--color-primary);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform var(--transition-smooth);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav.mobileOpen {
+        transform: translateX(0);
+    }
+
+    .mobileToggle {
+        display: flex;
+    }
+}
